@@ -1,5 +1,5 @@
 // @flow
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const STEP_NUMBER_RADIUS: number = 14;
 export const STEP_NUMBER_DIAMETER: number = STEP_NUMBER_RADIUS * 2;
@@ -30,9 +30,7 @@ export default StyleSheet.create({
     borderRadius: 3,
     overflow: 'hidden',
   },
-  tooltipText: {
-
-  },
+  tooltipText: {},
   tooltipContainer: {
     flex: 1,
   },
