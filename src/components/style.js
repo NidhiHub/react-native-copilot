@@ -1,5 +1,5 @@
 // @flow
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 export const STEP_NUMBER_RADIUS: number = 14;
 export const STEP_NUMBER_DIAMETER: number = STEP_NUMBER_RADIUS * 2;
@@ -25,14 +25,17 @@ export default StyleSheet.create({
   tooltip: {
     position: 'absolute',
     paddingTop: 15,
-    paddingHorizontal: 15,
-    backgroundColor: '#fff',
-    borderRadius: 3,
+    paddingHorizontal: 5,
+    backgroundColor: '#ededed',
+    borderRadius: 5,
     overflow: 'hidden',
   },
-  tooltipText: {},
+  tooltipText: {
+    fontFamily: Platform.select({android: 'Raleway-Regular', ios: 'Raleway'}),
+  },
   tooltipContainer: {
     flex: 1,
+    paddingHorizontal: 10,
   },
   stepNumberContainer: {
     position: 'absolute',
@@ -59,10 +62,11 @@ export default StyleSheet.create({
     padding: 10,
   },
   buttonText: {
-    color: '#27ae60',
+    color: '#6ebd8f',
+    fontFamily: 'Raleway-Bold',
   },
   bottomBar: {
-    marginTop: 10,
+    marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },

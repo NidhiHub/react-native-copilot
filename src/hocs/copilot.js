@@ -47,6 +47,7 @@ const copilot = ({
   backdropColor,
   stopOnOutsideClick = false,
   svgMaskPath,
+  path,
   verticalOffset = 0,
   wrapperStyle,
   arrowColor,
@@ -188,6 +189,11 @@ const copilot = ({
       this.eventEmitter.emit('stop');
     };
 
+    hide = async (): void => {
+      await this.setVisibility(false);
+      this.eventEmitter.emit('hide');
+    };
+
     async moveToCurrentStep(): void {
       const size = await this.state.currentStep.target.measure();
 
@@ -213,6 +219,7 @@ const copilot = ({
             next={this.next}
             prev={this.prev}
             stop={this.stop}
+            hide={this.hide}
             visible={this.state.visible}
             isFirstStep={this.isFirstStep()}
             isLastStep={this.isLastStep()}
@@ -227,6 +234,7 @@ const copilot = ({
             androidStatusBarVisible={androidStatusBarVisible}
             backdropColor={backdropColor}
             svgMaskPath={svgMaskPath}
+            path={path}
             stopOnOutsideClick={stopOnOutsideClick}
             arrowColor={arrowColor}
             ref={modal => {

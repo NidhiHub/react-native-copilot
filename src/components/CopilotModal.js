@@ -23,6 +23,7 @@ type Props = {
   stop: () => void,
   next: () => void,
   prev: () => void,
+  hide: () => void,
   currentStepNumber: number,
   currentStep: ?Step,
   visible: boolean,
@@ -252,6 +253,11 @@ class CopilotModal extends Component<Props, State> {
     this.props.stop();
   };
 
+  handleHide = () => {
+    this.reset();
+    this.props.hide();
+  };
+
   handleMaskClick = () => {
     if (this.props.stopOnOutsideClick) {
       this.handleStop();
@@ -276,8 +282,8 @@ class CopilotModal extends Component<Props, State> {
         animationDuration={this.props.animationDuration}
         backdropColor={this.props.backdropColor}
         svgMaskPath={this.props.svgMaskPath}
+        path={this.props.path}
         onClick={this.handleMaskClick}
-        currentStep={this.props.currentStep}
       />
     );
   }
@@ -321,6 +327,7 @@ class CopilotModal extends Component<Props, State> {
           handleNext={this.handleNext}
           handlePrev={this.handlePrev}
           handleStop={this.handleStop}
+          handleHide={this.handleHide}
           labels={this.props.labels}
         />
       </Animated.View>,
